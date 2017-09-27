@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="default">
+    <head>
+        <title>Skapa driftavbrott</title>
+    </head>
+    <body>
+        <div layout:fragment="content" class="row">
+            <div class="col-xs-8 col-md-8">
+                <h3>
+                    <a href="/driftavbrott" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-list"></span> Driftavbrott</a>
+                </h3>
+                <h2>Skapa driftavbrott</h2>
+                <form action="/save">
+                    <div class="form-group">
+                        <label for="kanal">Kanal:</label>
+                        <input type="text" class="form-control" name="kanal" />
+                    </div>
+                    <div class="form-group">
+                        <label for="start">Starttid</label>
+                        <input type="text" class="form-control" name="start" />
+                    </div>
+                    <div class="form-group">
+                        <label for="slut">Sluttid</label>
+                        <input type="text" class="form-control" name="slut" />
+                    </div>
+                    <button type="submit" class="btn btn-success">Save</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="default">
+    <head>
+        <title>Uppdatera driftavbrott</title>
+    </head>
+    <body>
+        <div layout:fragment="content" class="row">
+            <div class="col-xs-8 col-md-8">
+                <h3>
+                    <a href="/driftavbrott" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-list"></span> Product</a>
+                </h3>
+                <h2>Edit Product</h2>
+                <form action="/update">
+                    <div class="form-group">
+                        <label for="kanal">Kanal:</label>
+                        <input type="text" class="form-control" name="kanal" th:value="${driftavbrott.kanal}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="start">Start</label>
+                        <input type="text" class="form-control" name="start" th:value="${driftavbrott.start}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="slut">Slut</label>
+                        <input type="text" class="form-control" name="slut" th:value="${driftavbrott.slut}" />
+                    </div>
+                    <input type="hidden" name="id" th:value="${driftavbrott.id}" />
+                    <button type="submit" class="btn btn-success">Save</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
