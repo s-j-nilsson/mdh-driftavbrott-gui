@@ -48,7 +48,7 @@ public class DriftavbrottController {
     Driftavbrott driftavbrott = driftavbrottRepository.findOne(id);
     driftavbrottRepository.delete(driftavbrott);
 
-    return "redirect:/product";
+    return "redirect:/driftavbrott";
   }
 
   @RequestMapping("/edit/{id}")

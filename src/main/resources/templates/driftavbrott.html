@@ -10,9 +10,9 @@
         <div layout:fragment="content" class="row">
             <div class="col-xs-8 col-md-8">
                 <h3>
-                    <a href="/create" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Product</a>
+                    <a href="/create" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Driftavbrott</a>
                 </h3>
-                <h2>Product List</h2>
+                <h2>Driftavbrott</h2>
                 <div class="table-responsive">
                     <table class="table" id="product-table">
                         <thead>
@@ -25,8 +25,8 @@
                         <tbody>
                             <tr th:each="driftavbrott : ${driftavbrott}">
                                 <td><a th:text="${driftavbrott.kanal}" th:href="@{'/show/' + ${driftavbrott.id}}"></a></td>
-                                <td th:text="${product.start}"></td>
-                                <td th:text="${product.slut}"></td>
+                                <td th:text="${driftavbrott.start}"></td>
+                                <td th:text="${driftavbrott.slut}"></td>
                             </tr>
                         </tbody>
                     </table>

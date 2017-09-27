@@ -1,0 +1,7 @@
+server:
+    port: 8080
+endpoints.health.enabled: true
+security.basic.enabled: false
+management.security.enabled: false
+
+spring.data.mongodb.uri: mongodb://mongo:27017/driftavbrott
