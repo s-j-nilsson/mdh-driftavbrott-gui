@@ -20,6 +20,7 @@
                                 <th>Kanal</th>
                                 <th>Start</th>
                                 <th>Slut</th>
+                                <th>Anledning</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -27,6 +28,7 @@
                                 <td><a th:text="${driftavbrott.kanal}" th:href="@{'/show/' + ${driftavbrott.id}}"></a></td>
                                 <td th:text="${driftavbrott.start}"></td>
                                 <td th:text="${driftavbrott.slut}"></td>
+                                <td th:text="${driftavbrott.anledning}"></td>
                             </tr>
                         </tbody>
                     </table>

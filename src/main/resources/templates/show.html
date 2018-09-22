@@ -18,6 +18,8 @@
                     <dd th:text="${driftavbrott.start}"></dd>
                     <dt>Slut</dt>
                     <dd th:text="${driftavbrott.slut}"></dd>
+                    <dt>Anledning</dt>
+                    <dd th:text="${driftavbrott.anledning}"></dd>
                 </dl>
                 <form action="/delete">
                     <input type="hidden" name="id" th:value="${driftavbrott.id}" />

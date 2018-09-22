@@ -12,6 +12,7 @@ public class Driftavbrott {
 	private String kanal;
 	private String start;
 	private String slut;
+	private String anledning;
 
 	public String getId() {
 		return id;
@@ -45,10 +46,19 @@ public class Driftavbrott {
 		this.slut = slut;
 	}
 
+	public String getAnledning() {
+		return anledning;
+	}
+
+	public void setAnledning(String anledning) {
+		this.anledning = anledning;
+	}
+
 	@Override
 	public String toString() {
 		return "Driftavbrott [id=" + id + ", kanal=" + kanal + ", start=" + start
 				+ ", slut=" + slut
+				+ ", anledning=" + anledning
 				+ "]";
 	}
 
