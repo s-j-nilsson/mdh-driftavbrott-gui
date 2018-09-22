@@ -5,8 +5,16 @@
       layout:decorator="default">
     <head>
         <title>Driftavbrott</title>
+        <script type="text/javascript" class="init">
+
+          $(document).ready(function() {
+            $('#product-table').DataTable();
+          } );
+
+        </script>
     </head>
     <body>
+
         <div layout:fragment="content" class="row">
             <div class="col-xs-8 col-md-8">
                 <h3>
