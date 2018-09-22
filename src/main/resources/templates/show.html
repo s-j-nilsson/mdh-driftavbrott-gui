@@ -21,7 +21,7 @@
                     <dt>Anledning</dt>
                     <dd th:text="${driftavbrott.anledning}"></dd>
                 </dl>
-                <form action="/delete">
+                <form action="/delete" method="post">
                     <input type="hidden" name="id" th:value="${driftavbrott.id}" />
                     <h2><input type="submit" class="btn btn-danger" value="Delete" onclick="return confirm('Är du säker?');" />
                         <a th:href="@{'/edit/' + ${driftavbrott.id}}" class="btn btn-warning">Edit</a></h2>

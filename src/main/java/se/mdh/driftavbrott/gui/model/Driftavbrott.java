@@ -1,5 +1,7 @@
 package se.mdh.driftavbrott.gui.model;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -9,9 +11,19 @@ public class Driftavbrott {
 	@Id
 	private String id;
 
+	@NotNull
+	@Size(min=1, max=30, message = "Fältet måste ha ett värde")
 	private String kanal;
+
+	@NotNull
+	@Size(min=1, max=30, message = "Fältet måste ha ett värde")
 	private String start;
+
+	@NotNull
+	@Size(min=1, max=30, message = "Fältet måste ha ett värde")
 	private String slut;
+
+	@Size(min=1, max=30, message = "Fältet måste ha ett värde")
 	private String anledning;
 
 	public String getId() {

@@ -1,10 +1,13 @@
 package se.mdh.driftavbrott.gui.controller;
 
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import se.mdh.driftavbrott.gui.model.Driftavbrott;
 import se.mdh.driftavbrott.gui.persistence.DriftavbrottRepository;
@@ -15,35 +18,35 @@ public class DriftavbrottController {
   @Autowired
   private DriftavbrottRepository driftavbrottRepository;
 
-  @RequestMapping("/driftavbrott")
+  @GetMapping("/driftavbrott")
   public String product(Model model) {
     model.addAttribute("driftavbrott", driftavbrottRepository.findAll());
     return "driftavbrott";
   }
 
-  @RequestMapping("/create")
-  public String create(Model model) {
+  @GetMapping("/create")
+  public String create(Driftavbrott driftavbrott, Model model) {
+    model.addAttribute("driftavbrott", driftavbrott);
     return "create";
   }
 
-  @RequestMapping("/save")
-  public String save(@RequestParam String kanal, @RequestParam String start, @RequestParam String slut) {
-    Driftavbrott driftavbrott = new Driftavbrott();
-    driftavbrott.setKanal(kanal);
-    driftavbrott.setStart(start);
-    driftavbrott.setSlut(slut);
-    driftavbrottRepository.save(driftavbrott);
-
-    return "redirect:/show/" + driftavbrott.getId();
+  @PostMapping("/create")
+  public String create(@Valid Driftavbrott driftavbrott, BindingResult bindingResult) {
+    if(bindingResult.hasErrors()) {
+      return "create";
+    } else {
+      driftavbrottRepository.save(driftavbrott);
+      return "redirect:/show/" + driftavbrott.getId();
+    }
   }
 
-  @RequestMapping("/show/{id}")
+  @GetMapping("/show/{id}")
   public String show(@PathVariable String id, Model model) {
     model.addAttribute("driftavbrott", driftavbrottRepository.findOne(id));
     return "show";
   }
 
-  @RequestMapping("/delete")
+  @PostMapping("/delete")
   public String delete(@RequestParam String id) {
     Driftavbrott driftavbrott = driftavbrottRepository.findOne(id);
     driftavbrottRepository.delete(driftavbrott);
@@ -51,21 +54,19 @@ public class DriftavbrottController {
     return "redirect:/driftavbrott";
   }
 
-  @RequestMapping("/edit/{id}")
+  @GetMapping("/edit/{id}")
   public String edit(@PathVariable String id, Model model) {
     model.addAttribute("driftavbrott", driftavbrottRepository.findOne(id));
     return "edit";
   }
 
-  @RequestMapping("/update")
-  public String update(@RequestParam String id, @RequestParam String kanal, @RequestParam String start, @RequestParam String slut) {
-    Driftavbrott driftavbrott = driftavbrottRepository.findOne(id);
-    driftavbrott.setKanal(kanal);
-    driftavbrott.setStart(start);
-    driftavbrott.setSlut(slut);
-    driftavbrottRepository.save(driftavbrott);
-
-    return "redirect:/show/" + driftavbrott.getId();
+  @PostMapping("/update")
+  public String update(@Valid Driftavbrott driftavbrott, BindingResult bindingResult) {
+    if(bindingResult.hasErrors()) {
+      return "edit/"+ driftavbrott.getId();
+    } else {
+      driftavbrottRepository.save(driftavbrott);
+      return "redirect:/show/" + driftavbrott.getId();
+    }
   }
-
 }

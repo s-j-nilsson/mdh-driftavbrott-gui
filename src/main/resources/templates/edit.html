@@ -13,22 +13,26 @@
                     <a href="/driftavbrott" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-list"></span> Driftavbrott</a>
                 </h3>
                 <h2>Uppdatera driftavbrott</h2>
-                <form action="/update">
+                <form action="/update" th:object="${driftavbrott}" method="post">
                     <div class="form-group">
                         <label for="kanal">Kanal:</label>
                         <input type="text" class="form-control" name="kanal" th:value="${driftavbrott.kanal}" />
+                        <div class="error" th:if="${#fields.hasErrors('kanal')}" th:errors="*{kanal}">Name Error</div>
                     </div>
                     <div class="form-group">
                         <label for="start">Start</label>
                         <input type="text" class="form-control" name="start" th:value="${driftavbrott.start}" />
+                        <div class="error" th:if="${#fields.hasErrors('start')}" th:errors="*{start}">Name Error</div>
                     </div>
                     <div class="form-group">
                         <label for="slut">Slut</label>
                         <input type="text" class="form-control" name="slut" th:value="${driftavbrott.slut}" />
+                        <div class="error" th:if="${#fields.hasErrors('slut')}" th:errors="*{slut}">Name Error</div>
                     </div>
                     <div class="form-group">
                         <label for="anledning">Anledning</label>
                         <input type="text" class="form-control" name="anledning" th:value="${driftavbrott.anledning}" />
+                        <div class="error" th:if="${#fields.hasErrors('anledning')}" th:errors="*{anledning}">Name Error</div>
                     </div>
                     <input type="hidden" name="id" th:value="${driftavbrott.id}" />
                     <button type="submit" class="btn btn-success">Save</button>

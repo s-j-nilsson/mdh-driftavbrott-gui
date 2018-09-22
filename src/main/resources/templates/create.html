@@ -13,22 +13,26 @@
                     <a href="/driftavbrott" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-list"></span> Driftavbrott</a>
                 </h3>
                 <h2>Skapa driftavbrott</h2>
-                <form action="/save">
+                <form action="/create" th:object="${driftavbrott}" method="post">
                     <div class="form-group">
                         <label for="kanal">Kanal:</label>
                         <input type="text" class="form-control" name="kanal" />
+                        <div class="error" th:if="${#fields.hasErrors('kanal')}" th:errors="*{kanal}">Name Error</div>
                     </div>
                     <div class="form-group">
                         <label for="start">Starttid</label>
                         <input type="text" class="form-control" name="start" />
+                        <div class="error" th:if="${#fields.hasErrors('start')}" th:errors="*{start}">Name Error</div>
                     </div>
                     <div class="form-group">
                         <label for="slut">Sluttid</label>
                         <input type="text" class="form-control" name="slut" />
+                        <div class="error" th:if="${#fields.hasErrors('slut')}" th:errors="*{slut}">Name Error</div>
                     </div>
                     <div class="form-group">
                         <label for="anledning">Anledning</label>
                         <input type="text" class="form-control" name="anledning" />
+                        <div class="error" th:if="${#fields.hasErrors('anledning')}" th:errors="*{anledning}">Name Error</div>
                     </div>
                     <button type="submit" class="btn btn-success">Save</button>
                 </form>
