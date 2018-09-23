@@ -10,13 +10,17 @@
         <div layout:fragment="content" class="row">
             <div class="col-xs-8 col-md-8">
                 <h3>
-                    <a href="/driftavbrott" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-list"></span> Driftavbrott</a>
+                    <a href="/list" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-list"></span> Driftavbrott</a>
                 </h3>
                 <h2>Skapa driftavbrott</h2>
                 <form action="/create" th:object="${driftavbrott}" method="post">
                     <div class="form-group">
                         <label for="kanal">Kanal:</label>
-                        <input type="text" class="form-control" name="kanal" />
+                        <select class="form-control" th:field="*{kanal}">
+                            <option th:each="kanal : ${kanaler}" th:value="${kanal.namn}" th:text="${kanal.text}">
+                            </option>
+                        </select>
+                        <!--<input type="text" class="form-control" name="kanal" />-->
                         <div class="error" th:if="${#fields.hasErrors('kanal')}" th:errors="*{kanal}">Name Error</div>
                     </div>
                     <div class="form-group">
@@ -31,7 +35,10 @@
                     </div>
                     <div class="form-group">
                         <label for="anledning">Anledning</label>
-                        <input type="text" class="form-control" name="anledning" />
+                        <select class="form-control" th:field="*{anledning}">
+                            <option th:each="anledning : ${anledningar}" th:value="${anledning.namn}" th:text="${anledning.text}">
+                            </option>
+                        </select>
                         <div class="error" th:if="${#fields.hasErrors('anledning')}" th:errors="*{anledning}">Name Error</div>
                     </div>
                     <button type="submit" class="btn btn-success">Save</button>

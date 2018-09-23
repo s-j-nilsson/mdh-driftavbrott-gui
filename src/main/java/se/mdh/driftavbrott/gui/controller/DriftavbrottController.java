@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import se.mdh.driftavbrott.gui.model.Driftavbrott;
 import se.mdh.driftavbrott.gui.persistence.DriftavbrottRepository;
+import se.mdh.driftavbrott.gui.persistence.KanalRepository;
+import se.mdh.driftavbrott.gui.persistence.AnledningRepository;
 
 @Controller
 public class DriftavbrottController {
@@ -18,15 +20,23 @@ public class DriftavbrottController {
   @Autowired
   private DriftavbrottRepository driftavbrottRepository;
 
-  @GetMapping("/driftavbrott")
+  @Autowired
+  private AnledningRepository anledningRepository;
+
+  @Autowired
+  private KanalRepository kanalRepository;
+
+  @GetMapping("/list")
   public String product(Model model) {
     model.addAttribute("driftavbrott", driftavbrottRepository.findAll());
-    return "driftavbrott";
+    return "list";
   }
 
   @GetMapping("/create")
   public String create(Driftavbrott driftavbrott, Model model) {
     model.addAttribute("driftavbrott", driftavbrott);
+    model.addAttribute("kanaler", kanalRepository.findAll());
+    model.addAttribute("anledningar", anledningRepository.findAll());
     return "create";
   }
 
@@ -36,7 +46,7 @@ public class DriftavbrottController {
       return "create";
     } else {
       driftavbrottRepository.save(driftavbrott);
-      return "redirect:/show/" + driftavbrott.getId();
+      return "redirect:/list";
     }
   }
 
@@ -51,12 +61,14 @@ public class DriftavbrottController {
     Driftavbrott driftavbrott = driftavbrottRepository.findOne(id);
     driftavbrottRepository.delete(driftavbrott);
 
-    return "redirect:/driftavbrott";
+    return "redirect:/list";
   }
 
   @GetMapping("/edit/{id}")
   public String edit(@PathVariable String id, Model model) {
     model.addAttribute("driftavbrott", driftavbrottRepository.findOne(id));
+    model.addAttribute("kanaler", kanalRepository.findAll());
+    model.addAttribute("anledningar", anledningRepository.findAll());
     return "edit";
   }
 
@@ -66,7 +78,7 @@ public class DriftavbrottController {
       return "edit/"+ driftavbrott.getId();
     } else {
       driftavbrottRepository.save(driftavbrott);
-      return "redirect:/show/" + driftavbrott.getId();
+      return "redirect:/list";
     }
   }
 }

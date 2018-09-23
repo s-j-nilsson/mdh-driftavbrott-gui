@@ -10,13 +10,16 @@
         <div layout:fragment="content" class="row">
             <div class="col-xs-8 col-md-8">
                 <h3>
-                    <a href="/driftavbrott" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-list"></span> Driftavbrott</a>
+                    <a href="/list" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-list"></span> Driftavbrott</a>
                 </h3>
                 <h2>Uppdatera driftavbrott</h2>
                 <form action="/update" th:object="${driftavbrott}" method="post">
                     <div class="form-group">
                         <label for="kanal">Kanal:</label>
-                        <input type="text" class="form-control" name="kanal" th:value="${driftavbrott.kanal}" />
+                        <select class="form-control" id="kanal" name="kanal">
+                            <option th:each="kanal : ${kanaler}" th:selected="${driftavbrott.kanal==kanal.namn}" th:value="${kanal.namn}" th:text="${kanal.text}">
+                            </option>
+                        </select>
                         <div class="error" th:if="${#fields.hasErrors('kanal')}" th:errors="*{kanal}">Name Error</div>
                     </div>
                     <div class="form-group">
@@ -31,7 +34,10 @@
                     </div>
                     <div class="form-group">
                         <label for="anledning">Anledning</label>
-                        <input type="text" class="form-control" name="anledning" th:value="${driftavbrott.anledning}" />
+                        <select class="form-control" id="anledning" name="anledning">
+                            <option th:each="anledning : ${anledningar}" th:selected="${driftavbrott.anledning==anledning.namn}" th:value="${anledning.namn}" th:text="${anledning.text}">
+                            </option>
+                        </select>
                         <div class="error" th:if="${#fields.hasErrors('anledning')}" th:errors="*{anledning}">Name Error</div>
                     </div>
                     <input type="hidden" name="id" th:value="${driftavbrott.id}" />

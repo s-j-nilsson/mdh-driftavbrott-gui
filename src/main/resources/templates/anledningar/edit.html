@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="/default">
+    <head>
+        <title>Uppdatera anledning</title>
+    </head>
+    <body>
+        <div layout:fragment="content" class="row">
+            <div class="col-xs-8 col-md-8">
+                <h3>
+                    <a href="/anledningar/list" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-list"></span> anledningar</a>
+                </h3>
+                <h2>Uppdatera Anledningar</h2>
+                <form action="/anledningar/update" th:object="${anledning}" method="post">
+                    <div class="form-group">
+                        <label for="namn">Namn:</label>
+                        <input type="text" class="form-control" name="namn" th:value="${anledning.namn}" />
+                        <div class="error" th:if="${#fields.hasErrors('namn')}" th:errors="*{namn}">Name Error</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="text">Text:</label>
+                        <input type="text" class="form-control" name="text" th:value="${anledning.text}" />
+                        <div class="error" th:if="${#fields.hasErrors('text')}" th:errors="*{text}">Name Error</div>
+                    </div>
+                    <input type="hidden" name="id" th:value="${anledning.id}" />
+                    <button type="submit" class="btn btn-success">Save</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="/default">
+    <head>
+        <title>anledningar</title>
+        <script type="text/javascript" class="init">
+
+          $(document).ready(function() {
+            $('#product-table').DataTable();
+          } );
+
+        </script>
+    </head>
+    <body>
+
+        <div layout:fragment="content" class="row">
+            <div class="col-xs-8 col-md-8">
+                <h3>
+                    <a href="/anledningar/create" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Anledningar</a>
+                </h3>
+                <h2>Anledningar</h2>
+                <div class="table-responsive">
+                    <table class="table, display" id="product-table">
+                        <thead>
+                            <tr>
+                                <th>Namn</th>
+                                <th>Text</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="anledning : ${anledningar}">
+                                <td><a th:text="${anledning.namn}" th:href="@{'/anledningar/show/' + ${anledning.id}}"></a></td>
+                                <td th:text="${anledning.text}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
