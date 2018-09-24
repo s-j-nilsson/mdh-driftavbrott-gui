@@ -15,9 +15,9 @@
                 <h2 th:text="${driftavbrott.kanal}"></h2>
                 <dl class="list">
                     <dt>Start</dt>
-                    <dd th:text="${driftavbrott.start}"></dd>
+                    <dd th:text="${#strings.defaultString(driftavbrott.startDatum, '') + ' ' + driftavbrott.startTid}"></dd>
                     <dt>Slut</dt>
-                    <dd th:text="${driftavbrott.slut}"></dd>
+                    <dd th:text="${#strings.defaultString(driftavbrott.slutDatum, '') + ' ' + driftavbrott.slutTid}"></dd>
                     <dt>Anledning</dt>
                     <dd th:text="${driftavbrott.anledning}"></dd>
                 </dl>

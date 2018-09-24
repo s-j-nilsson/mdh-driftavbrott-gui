@@ -28,7 +28,7 @@ public class DriftavbrottController {
 
   @GetMapping("/list")
   public String product(Model model) {
-    model.addAttribute("driftavbrott", driftavbrottRepository.findAll());
+    model.addAttribute("driftavbrottList", driftavbrottRepository.findAll());
     return "list";
   }
 
@@ -43,7 +43,7 @@ public class DriftavbrottController {
   @PostMapping("/create")
   public String create(@Valid Driftavbrott driftavbrott, BindingResult bindingResult) {
     if(bindingResult.hasErrors()) {
-      return "create";
+      return "forward:/create";
     } else {
       driftavbrottRepository.save(driftavbrott);
       return "redirect:/list";
@@ -75,7 +75,7 @@ public class DriftavbrottController {
   @PostMapping("/update")
   public String update(@Valid Driftavbrott driftavbrott, BindingResult bindingResult) {
     if(bindingResult.hasErrors()) {
-      return "edit/"+ driftavbrott.getId();
+      return "forward:/edit/"+ driftavbrott.getId();
     } else {
       driftavbrottRepository.save(driftavbrott);
       return "redirect:/list";

@@ -23,14 +23,14 @@
                         <div class="error" th:if="${#fields.hasErrors('kanal')}" th:errors="*{kanal}">Name Error</div>
                     </div>
                     <div class="form-group">
-                        <label for="start">Start</label>
-                        <input type="text" class="form-control" name="start" th:value="${driftavbrott.start}" />
-                        <div class="error" th:if="${#fields.hasErrors('start')}" th:errors="*{start}">Name Error</div>
+                        <label for="startdatum">Start</label>
+                        <input type="date" class="form-control" name="startDatum" id="startdatum" th:value="${driftavbrott.startDatum}" />
+                        <input type="time" class="form-control" name="startTid" id="starttid" th:value="${driftavbrott.startTid}" />
                     </div>
                     <div class="form-group">
-                        <label for="slut">Slut</label>
-                        <input type="text" class="form-control" name="slut" th:value="${driftavbrott.slut}" />
-                        <div class="error" th:if="${#fields.hasErrors('slut')}" th:errors="*{slut}">Name Error</div>
+                        <label for="slutdatum">Slut</label>
+                        <input type="date" class="form-control" name="slutDatum" id="slutdatum" th:value="${driftavbrott.slutDatum}" />
+                        <input type="time" class="form-control" name="slutTid" id="sluttid" th:value="${driftavbrott.slutTid}" />
                     </div>
                     <div class="form-group">
                         <label for="anledning">Anledning</label>

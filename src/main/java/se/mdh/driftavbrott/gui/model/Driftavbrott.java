@@ -1,9 +1,12 @@
 package se.mdh.driftavbrott.gui.model;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Document(collection = "driftavbrott")
 public class Driftavbrott {
@@ -15,13 +18,17 @@ public class Driftavbrott {
 	@Size(min=1, max=30, message = "Fältet måste ha ett värde")
 	private String kanal;
 
-	@NotNull
-	@Size(min=1, max=30, message = "Fältet måste ha ett värde")
-	private String start;
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+	private LocalDate startDatum;
 
-	@NotNull
-	@Size(min=1, max=30, message = "Fältet måste ha ett värde")
-	private String slut;
+	@DateTimeFormat(pattern="HH:mm")
+	private LocalTime startTid;
+
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+	private LocalDate slutDatum;
+
+	@DateTimeFormat(pattern="HH:mm")
+	private LocalTime slutTid;
 
 	@Size(min=1, max=30, message = "Fältet måste ha ett värde")
 	private String anledning;
@@ -42,20 +49,36 @@ public class Driftavbrott {
 		this.kanal = kanal;
 	}
 
-	public String getStart() {
-		return start;
+	public LocalDate getStartDatum() {
+		return startDatum;
 	}
 
-	public void setStart(String start) {
-		this.start = start;
+	public void setStartDatum(LocalDate startDatum) {
+		this.startDatum = startDatum;
 	}
 
-	public String getSlut() {
-		return slut;
+	public LocalTime getStartTid() {
+		return startTid;
 	}
 
-	public void setSlut(String slut) {
-		this.slut = slut;
+	public void setStartTid(LocalTime startTid) {
+		this.startTid = startTid;
+	}
+
+	public LocalDate getSlutDatum() {
+		return slutDatum;
+	}
+
+	public void setSlutDatum(LocalDate slutDatum) {
+		this.slutDatum = slutDatum;
+	}
+
+	public LocalTime getSlutTid() {
+		return slutTid;
+	}
+
+	public void setSlutTid(LocalTime slutTid) {
+		this.slutTid = slutTid;
 	}
 
 	public String getAnledning() {
@@ -68,8 +91,11 @@ public class Driftavbrott {
 
 	@Override
 	public String toString() {
-		return "Driftavbrott [id=" + id + ", kanal=" + kanal + ", start=" + start
-				+ ", slut=" + slut
+		return "Driftavbrott [id=" + id + ", kanal=" + kanal
+				+ ", startDatum=" + startDatum
+				+ ", startTid=" + startTid
+				+ ", slutDatum=" + slutDatum
+				+ ", slutTid=" + slutTid
 				+ ", anledning=" + anledning
 				+ "]";
 	}

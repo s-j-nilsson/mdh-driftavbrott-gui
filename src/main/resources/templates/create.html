@@ -16,7 +16,7 @@
                 <form action="/create" th:object="${driftavbrott}" method="post">
                     <div class="form-group">
                         <label for="kanal">Kanal:</label>
-                        <select class="form-control" th:field="*{kanal}">
+                        <select class="form-control" id="kanal" th:field="*{kanal}">
                             <option th:each="kanal : ${kanaler}" th:value="${kanal.namn}" th:text="${kanal.text}">
                             </option>
                         </select>
@@ -24,18 +24,18 @@
                         <div class="error" th:if="${#fields.hasErrors('kanal')}" th:errors="*{kanal}">Name Error</div>
                     </div>
                     <div class="form-group">
-                        <label for="start">Starttid</label>
-                        <input type="text" class="form-control" name="start" />
-                        <div class="error" th:if="${#fields.hasErrors('start')}" th:errors="*{start}">Name Error</div>
+                        <label for="startdatum">Starttid</label>
+                                <input type="date" class="form-control" id="startdatum" th:field="*{startDatum}" />
+                                <input type="time" class="form-control" id="starttid" th:field="*{startTid}"/>
                     </div>
                     <div class="form-group">
-                        <label for="slut">Sluttid</label>
-                        <input type="text" class="form-control" name="slut" />
-                        <div class="error" th:if="${#fields.hasErrors('slut')}" th:errors="*{slut}">Name Error</div>
+                        <label for="slutdatum">Sluttid</label>
+                        <input type="date" class="form-control" id="slutdatum" th:field="*{slutDatum}" />
+                        <input type="time" class="form-control" id="sluttid" th:field="*{slutTid}"/>
                     </div>
                     <div class="form-group">
                         <label for="anledning">Anledning</label>
-                        <select class="form-control" th:field="*{anledning}">
+                        <select class="form-control" id="anledning" th:field="*{anledning}">
                             <option th:each="anledning : ${anledningar}" th:value="${anledning.namn}" th:text="${anledning.text}">
                             </option>
                         </select>
