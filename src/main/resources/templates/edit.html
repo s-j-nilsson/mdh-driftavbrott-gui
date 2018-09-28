@@ -17,7 +17,7 @@
                     <div class="form-group">
                         <label for="kanal">Kanal:</label>
                         <select class="form-control" id="kanal" name="kanal">
-                            <option th:each="kanal : ${kanaler}" th:selected="${driftavbrott.kanal==kanal.namn}" th:value="${kanal.namn}" th:text="${kanal.text}">
+                            <option th:each="kanal : ${kanaler}" th:selected="${driftavbrott.kanal.id==kanal.id}" th:value="${kanal.id}" th:text="${kanal.text}">
                             </option>
                         </select>
                         <div class="error" th:if="${#fields.hasErrors('kanal')}" th:errors="*{kanal}">Name Error</div>
@@ -47,7 +47,7 @@
                     <div class="form-group">
                         <label for="anledning">Anledning</label>
                         <select class="form-control" id="anledning" name="anledning">
-                            <option th:each="anledning : ${anledningar}" th:selected="${driftavbrott.anledning==anledning.namn}" th:value="${anledning.namn}" th:text="${anledning.text}">
+                            <option th:each="anledning : ${anledningar}" th:selected="${driftavbrott.anledning.id==anledning.id}" th:value="${anledning.id}" th:text="${anledning.text}">
                             </option>
                         </select>
                         <div class="error" th:if="${#fields.hasErrors('anledning')}" th:errors="*{anledning}">Name Error</div>

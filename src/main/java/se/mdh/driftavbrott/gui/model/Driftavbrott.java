@@ -14,9 +14,8 @@ public class Driftavbrott {
 	@Id
 	private String id;
 
-	@NotNull
-	@Size(min=1, max=30, message = "Fältet måste ha ett värde")
-	private String kanal;
+	@NotNull(message = "Fältet måste ha ett värde")
+	private Kanal kanal;
 
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	private LocalDate startDatum;
@@ -30,8 +29,8 @@ public class Driftavbrott {
 	@DateTimeFormat(pattern="HH:mm")
 	private LocalTime slutTid;
 
-	@Size(min=1, max=30, message = "Fältet måste ha ett värde")
-	private String anledning;
+	@NotNull(message = "Fältet måste ha ett värde")
+	private Anledning anledning;
 
 	public String getId() {
 		return id;
@@ -41,11 +40,11 @@ public class Driftavbrott {
 		this.id = id;
 	}
 
-	public String getKanal() {
+	public Kanal getKanal() {
 		return kanal;
 	}
 
-	public void setKanal(String kanal) {
+	public void setKanal(Kanal kanal) {
 		this.kanal = kanal;
 	}
 
@@ -81,22 +80,22 @@ public class Driftavbrott {
 		this.slutTid = slutTid;
 	}
 
-	public String getAnledning() {
+	public Anledning getAnledning() {
 		return anledning;
 	}
 
-	public void setAnledning(String anledning) {
+	public void setAnledning(Anledning anledning) {
 		this.anledning = anledning;
 	}
 
 	@Override
 	public String toString() {
-		return "Driftavbrott [id=" + id + ", kanal=" + kanal
+		return "Driftavbrott [id=" + id + ", kanal=" + kanal.getNamn()
 				+ ", startDatum=" + startDatum
 				+ ", startTid=" + startTid
 				+ ", slutDatum=" + slutDatum
 				+ ", slutTid=" + slutTid
-				+ ", anledning=" + anledning
+				+ ", anledning=" + anledning.getNamn()
 				+ "]";
 	}
 

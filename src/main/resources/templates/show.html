@@ -12,14 +12,14 @@
                 <h3>
                     <a href="/list" class="btn btn-primary"><span class="glyphicon glyphicon-list"></span> Driftavbrott</a>
                 </h3>
-                <h2 th:text="${driftavbrott.kanal}"></h2>
+                <h2 th:text="${driftavbrott.kanal.text}"></h2>
                 <dl class="list">
                     <dt>Start</dt>
                     <dd th:text="${#strings.defaultString(driftavbrott.startDatum, '') + ' ' + driftavbrott.startTid}"></dd>
                     <dt>Slut</dt>
                     <dd th:text="${#strings.defaultString(driftavbrott.slutDatum, '') + ' ' + driftavbrott.slutTid}"></dd>
                     <dt>Anledning</dt>
-                    <dd th:text="${driftavbrott.anledning}"></dd>
+                    <dd th:text="${driftavbrott.anledning.text}"></dd>
                 </dl>
                 <form action="/delete" method="post">
                     <input type="hidden" name="id" th:value="${driftavbrott.id}" />

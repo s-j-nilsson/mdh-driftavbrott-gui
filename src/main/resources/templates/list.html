@@ -33,10 +33,10 @@
                         </thead>
                         <tbody>
                             <tr th:each="driftavbrott : ${driftavbrottList}">
-                                <td><a th:text="${driftavbrott.kanal}" th:href="@{'/show/' + ${driftavbrott.id}}"></a></td>
+                                <td><a th:text="${driftavbrott.kanal.text}" th:href="@{'/show/' + ${driftavbrott.id}}"></a></td>
                                 <td th:text="${#strings.defaultString(driftavbrott.startDatum, '') + ' ' + driftavbrott.startTid}"></td>
                                 <td th:text="${#strings.defaultString(driftavbrott.slutDatum, '') + ' ' + driftavbrott.slutTid}"></td>
-                                <td th:text="${driftavbrott.anledning}"></td>
+                                <td th:text="${driftavbrott.anledning.text}"></td>
                             </tr>
                         </tbody>
                     </table>
