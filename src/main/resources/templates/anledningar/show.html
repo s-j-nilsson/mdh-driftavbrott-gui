@@ -16,6 +16,7 @@
                 <dl class="list">
                     <dt>namn</dt>
                     <dd th:text="${anledning.namn}"></dd>
+                    <dd th:text="${anledning.meddelande}"></dd>
                 </dl>
                 <form action="/anledningar/delete" method="post">
                     <input type="hidden" name="id" th:value="${anledning.id}" />

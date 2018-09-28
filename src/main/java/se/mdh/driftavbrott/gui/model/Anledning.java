@@ -18,6 +18,8 @@ public class Anledning {
   @NotEmpty
   private String text;
 
+  private String meddelande;
+
   public String getId() {
     return id;
   }
@@ -40,5 +42,13 @@ public class Anledning {
 
   public void setText(String text) {
     this.text = text;
+  }
+
+  public String getMeddelande() {
+    return meddelande;
+  }
+
+  public void setMeddelande(String meddelande) {
+    this.meddelande = meddelande;
   }
 }
