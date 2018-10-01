@@ -4,11 +4,11 @@ endpoints.health.enabled: true
 security.basic.enabled: false
 management.security.enabled: false
 
-spring.data.mongodb.uri: mongodb://mongo:27017/driftavbrott
+spring.data.mongodb.uri: mongodb://mongocontainer:27017/driftavbrott
 
 spring:
     profiles: non-docker
 
     data:
         mongodb:
-            uri: mongodb://localhost:27000/driftavbrott
+            uri: mongodb://localhost:27017/driftavbrott
