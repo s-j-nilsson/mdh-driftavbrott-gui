@@ -9,6 +9,11 @@ För att köra i docker
 4. docker run -p 8080:8080 --name driftavbrott-gui-container --network=driftavbrottnetwork driftavbrott-gui
 
 
+Docker-compose
+1. docker-compose build
+
+2. docker-compose up
+
 
 För att köra i IDE, t.ex. Intellij
 
@@ -17,3 +22,5 @@ För att köra i IDE, t.ex. Intellij
 2. Main class: MdhDriftavbrottGuiApplication
 
     Env: -Dspring.profiles.active=non-docker
+
+
