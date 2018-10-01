@@ -10,17 +10,19 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import se.mdh.driftavbrott.gui.model.Driftavbrott;
 import se.mdh.driftavbrott.gui.model.Kanal;
-import se.mdh.driftavbrott.gui.persistence.DriftavbrottRepository;
 import se.mdh.driftavbrott.gui.persistence.KanalRepository;
 
 @Controller
 @RequestMapping(value = "/kanaler")
 public class KanalController {
 
+  private final KanalRepository kanalRepository;
+
   @Autowired
-  private KanalRepository kanalRepository;
+  public KanalController(KanalRepository kanalRepository) {
+    this.kanalRepository = kanalRepository;
+  }
 
   @GetMapping("/list")
   public String product(Model model) {

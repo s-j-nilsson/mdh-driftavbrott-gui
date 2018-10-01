@@ -10,21 +10,25 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import se.mdh.driftavbrott.gui.model.Driftavbrott;
+import se.mdh.driftavbrott.gui.persistence.AnledningRepository;
 import se.mdh.driftavbrott.gui.persistence.DriftavbrottRepository;
 import se.mdh.driftavbrott.gui.persistence.KanalRepository;
-import se.mdh.driftavbrott.gui.persistence.AnledningRepository;
 
 @Controller
 public class DriftavbrottController {
 
-  @Autowired
-  private DriftavbrottRepository driftavbrottRepository;
+  private final DriftavbrottRepository driftavbrottRepository;
+
+  private final AnledningRepository anledningRepository;
+
+  private final KanalRepository kanalRepository;
 
   @Autowired
-  private AnledningRepository anledningRepository;
-
-  @Autowired
-  private KanalRepository kanalRepository;
+  public DriftavbrottController(DriftavbrottRepository driftavbrottRepository, AnledningRepository anledningRepository, KanalRepository kanalRepository) {
+    this.driftavbrottRepository = driftavbrottRepository;
+    this.anledningRepository = anledningRepository;
+    this.kanalRepository = kanalRepository;
+  }
 
   @GetMapping("/list")
   public String product(Model model) {

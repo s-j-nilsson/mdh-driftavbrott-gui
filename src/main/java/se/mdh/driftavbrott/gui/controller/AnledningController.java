@@ -17,8 +17,12 @@ import se.mdh.driftavbrott.gui.persistence.AnledningRepository;
 @RequestMapping(value = "/anledningar")
 public class AnledningController {
 
+  private final AnledningRepository anledningRepository;
+
   @Autowired
-  private AnledningRepository anledningRepository;
+  public AnledningController(AnledningRepository anledningRepository) {
+    this.anledningRepository = anledningRepository;
+  }
 
   @GetMapping("/list")
   public String product(Model model) {
