@@ -15,12 +15,12 @@
                 <h2>Uppdatera Kanal</h2>
                 <form action="/kanaler/update" th:object="${kanal}" method="post">
                     <div class="form-group">
-                        <label for="namn">Namn:</label>
+                        <label for="namn">Nyckel</label>
                         <input type="text" class="form-control" name="namn" th:value="${kanal.namn}" />
                         <div class="error" th:if="${#fields.hasErrors('namn')}" th:errors="*{namn}">Name Error</div>
                     </div>
                     <div class="form-group">
-                        <label for="text">Text:</label>
+                        <label for="text">Text</label>
                         <input type="text" class="form-control" name="text" th:value="${kanal.text}" />
                         <div class="error" th:if="${#fields.hasErrors('text')}" th:errors="*{text}">Name Error</div>
                     </div>

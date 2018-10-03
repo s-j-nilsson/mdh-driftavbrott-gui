@@ -15,7 +15,7 @@
                 <h2>Skapa anledning</h2>
                 <form action="/anledningar/create" th:object="${anledning}" method="post">
                     <div class="form-group">
-                        <label for="namn">Namn:</label>
+                        <label for="namn">Nyckel</label>
                         <input type="text" class="form-control" name="namn" />
                         <div class="error" th:if="${#fields.hasErrors('namn')}" th:errors="*{namn}">Name Error</div>
                     </div>
