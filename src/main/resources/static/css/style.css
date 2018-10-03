@@ -18,3 +18,25 @@ body {
 .error {
   color: red;
 }
+
+.navbar-brand
+{
+  position: absolute;
+  width: 100%;
+  left: 0;
+  text-align: center;
+  margin:0 auto;
+  padding: 3px 15px 15px 15px;
+}
+.navbar-brand > img {
+  display: inline-block;
+}
+.navbar-toggle {
+  z-index:3;
+}
+
+@media (min-width: 768px) {
+  .navbar-right {
+    margin-right: inherit;
+  }
+}
